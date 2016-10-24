@@ -1,24 +1,19 @@
-<div class="container-fluid">
-    <div class="row">
+<div class="row" style="height:2000px;">
+    <div infinite-scroll='products.nextPage()' infinite-scroll-disabled='products.busy' infinite-scroll-distance='0'>
 
-        <div infinite-scroll='product.nextPage()' infinite-scroll-disabled='product.busy' infinite-scroll-distance='0'>
 
-            <div ng-repeat="product in product.items">
-                <div class="col-md-2" style="height:200px;">
-                    <img ng-src="https://styletribute.com/{{product.smallImage}}" class="smallimage">
-                    <p>{{product.designer}}</p>
-                    <p>{{product.name}}</p>
-                    <p>{{product.stylesort}}</p>
-                </div>
-
-            </div>
-
-            <div ng-show='product.busy && product.after <= product.totalPage' class="col-md-2 col-md-offset-5">
-                Loading data...
-            </div>
-            <div ng-show='product.after > product.totalPage' class="col-md-2 col-md-offset-5">End of Products</div>
+        <div ng-repeat="product in products.items" data-drop="true" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{index: {{$index}}, animate:true, onStart:'set_item_id({board_item_id: products.items}, {index: $index})'}" jqyoui-droppable="{index: {{$index}}}" ng-model="products.items" class="col-md-2" style="height:200px;">
+                <img ng-src="https://styletribute.com/{{product.smallImage}}" class="smallimage">
+                <p>{{product.designer}}</p>
+                <p>{{product.name}}</p>
         </div>
 
 
+        <div ng-show='products.busy && products.after <= products.totalPage' class="col-md-2 col-md-offset-5">
+            Loading data...
+        </div>
+        <div ng-show='products.after > products.totalPage' class="col-md-2 col-md-offset-5">End of Products</div>
+
+        <div style='clear: both;'></div>
     </div>
 </div>

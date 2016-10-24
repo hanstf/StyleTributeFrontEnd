@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'infinite-scroll'
+    'infinite-scroll',
+    'ngDragDrop'
   ])
   .config(function ($routeProvider) {
     $routeProvider
